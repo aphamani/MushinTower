@@ -1,0 +1,742 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
+}
+
+@keyframes guyFalling {
+    0%{
+        background-image: url(./img/mec_qui_tombe.png);
+    }
+    100%{
+        background-image: url(./img/mec_qui_tombe2.png);
+    }
+}
+
+@keyframes guyFallingEnd {
+    0%{
+        top: 40vh;
+    }
+    100%{
+        top: 100vh;
+    }
+}
+
+@keyframes guyLiftUp {
+    0%{
+        background-image: url(./img/mec_qui_tombe.png);
+    }
+    20%{
+        background-image: url(./img/au_sol.png);
+    }
+    40%{
+        background-image: url(./img/au_sol2.png);
+    }
+    60%{
+        background-image: url(./img/au_sol3.png);
+    }
+    80%{
+        background-image: url(./img/au_sol4.png);
+    }
+    100%{
+        background-image: url(./img/MarcheDroite3.png);
+    }
+}
+
+@keyframes guyWalkRight {
+    0%{
+        background-image: url(./img/MarcheDroite3.png);
+    }
+    33%{
+        background-image: url(./img/MarcheDroite4.png);
+    }
+    66%{
+        background-image: url(./img/MarcheDroite1.png);
+    }
+    100%{
+        background-image: url(./img/MarcheDroite2.png);
+    }
+}
+
+@keyframes guyWalkLeft {
+    0%{
+        background-image: url(./img/MarcheGauche3.png);
+    }
+    33%{
+        background-image: url(./img/MarcheGauche4.png);
+    }
+    66%{
+        background-image: url(./img/MarcheGauche1.png);
+    }
+    100%{
+        background-image: url(./img/MarcheGauche2.png);
+    }
+}
+
+@keyframes guyWalkBack {
+    0%{
+        background-image: url(./img/MarcheHaut3.png);
+    }
+    33%{
+        background-image: url(./img/MarcheHaut4.png);
+    }
+    66%{
+        background-image: url(./img/MarcheHaut1.png);
+    }
+    100%{
+        background-image: url(./img/MarcheHaut2.png);
+    }
+}
+
+@keyframes towerSlide {
+    0%{
+        top: 0;
+    }
+    100%{
+        top:-368vh;
+    }
+}
+
+@keyframes guyWalkToTower {
+    0%{
+        left: 20vw;
+    }
+    100%{
+        left: 100vw;
+    }
+}
+
+@keyframes guyWalkToBalcony {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: min(-55%, -5em);
+    }
+}
+
+@keyframes elevatorDoorSlideLeft {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes elevatorDoorSlideRight {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+body, .room, .hall{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.colorTheme{
+    position: absolute;
+    font-size: 1.5em;
+    background-color: white;
+    border: 0.2em solid black;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.home, .wideDigitalCodeContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.wideDigitalCodeContainer{
+    display: none;
+}
+
+.homeMenu, .wideDigitalCodeWindow{
+    margin: auto;  
+    width: min(80%, 50em);
+    height: min(80%, 50em);
+    background-color: white;
+    border: 0.3em solid black;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.home h1{
+    font-size: min(7em,15vw,15vh);
+    width: 100%;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.wideDigitalCodeWindow h1{
+    font-size: min(5em,5vw,5vh);
+    width: 100%;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.wideDigitalCode{
+    height: max(20vw,40vh);
+    width: min(30vw,60vh);
+    border: 0.3em solid black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.code{
+    width: 90%;
+    border: 0.2em solid black;
+    height: 20%;
+    margin: auto;
+    font-size: min(5em,5vw,5vh);
+    text-align: right;
+}
+
+.digits{
+    flex-wrap: wrap;
+    display: flex;
+    align-self: center;
+    height: 80%;
+    width: 100%;
+}
+
+.digit{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    border: 0.2em solid black;
+    height: 30%;
+    line-height: 200%;
+    font-size: min(5em,5vw,5vh);
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.buttons div, .exit{
+    font-size: min(5em,5vw,5vh);
+    border: 0.2em solid black;
+    width: 5em;
+    text-align: center;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.exit{
+    position: absolute;
+    top: -1em;
+    right: -1em;
+}
+
+.playButton{
+    font-size: min(7em,15vw,15vh);
+    margin: auto;
+    width: min(50%, 30em);
+    height: min(30%, 10em);
+    cursor: pointer;
+    background-color: white;
+    border: 0.1em solid black;
+}
+
+.playButton:hover{
+    background-color: black;
+    color: white;
+}
+
+#blackScreen{
+    z-index: 3;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s linear;
+}
+
+.black{
+    background-color: black;
+}
+
+.transparent{
+    background-color: unset;
+}
+
+/* ROOM */
+
+.room, .hall{
+    display: none;
+    overflow: hidden;
+}
+
+.room, .doorContainer, .hall{
+    transform-style: preserve-3d;
+    perspective: 100em;
+}
+
+.frontWall, .leftWall, .rightWall, .floor, .ceiling{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 0.3em solid black;
+}
+
+.frontWall{
+    transform: translateZ(-50em);
+    background-color: white;
+    z-index: 1;
+}
+
+.leftWall{
+    width: 200%;
+    transform-origin: left;
+    transform: rotateY(90deg);
+}
+
+.rightWall{
+    width: 200%;
+    right: 0;
+    transform-origin: right;
+    transform: rotateY(-90deg);
+}
+
+.floor{
+    bottom: 0;
+    height: 300%;
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+}
+
+.ceiling{
+    height: 300%;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+
+.question{
+    font-size: min(3em,10vw);
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.doors{
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.doorContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer{
+    height: 50%;
+    width: 100%;
+    font-size: 2em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.answer img{
+    max-width: 20vw;
+}
+
+img{
+    filter: grayscale(100%);
+}
+
+.door, .elevator{
+    position: relative;
+    height: 100%;
+    width: 90%;
+    max-width: 15em;
+    background-color: rgb(65, 65, 65);
+    cursor: pointer;
+    display: flex;
+}
+
+.elevator{
+    cursor: unset;
+}
+
+.elevatorDoors{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.digitalCode{
+    width: 2em;
+    height: 3em;
+    position: absolute;
+    background: url(./img/digicode.jpg);
+    background-size: 100% 100%;
+    left: 100%;
+    top: 40%;
+    transition: all 0.1s linear;
+    cursor: pointer;
+}
+
+.digitalCode:hover{
+    transform: scale(1.2);
+}
+
+.innerDoor{
+    height: 100%;
+    width: 100%;
+    border: 0.5em solid black;
+    background-color: white;
+    transform-origin: right;
+}
+
+.elevatorInnerLeftDoor, .elevatorInnerRightDoor{
+    height: 100%;
+    width: 50%;
+    border: 0.5em solid black;
+    background-color: white;
+}
+
+.elevatorOpenLeft{
+    animation: elevatorDoorSlideLeft linear 1s;
+    animation-fill-mode: forwards;
+}
+
+.elevatorOpenRight{
+    animation: elevatorDoorSlideRight linear 1s;
+    animation-fill-mode: forwards;
+}
+
+.door:hover .innerDoor:not(.open){
+    transform: rotateY(15deg);
+}
+
+.open{
+    transition: all linear 1s;
+    transform: rotateY(100deg);
+}
+
+.stage{
+    font-size: 3em;
+    margin: 0.5em;
+    position: absolute;
+    right: 0;
+}
+
+.handle{
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background-color: black;
+    position: absolute;
+    top: 40%;
+    left: 1em;
+}
+
+.room .guy, .hall .guy{
+    background-image: url(./img/MarcheHaut1.png);
+    background-size: 100% 100%;
+    width: min(40vh,20em);
+    height: min(40vh,20em);
+    z-index: 1;
+    top: 70vh;
+    bottom: -10vh;
+    position: relative;
+    pointer-events: none;
+    margin: 0 auto;
+}
+
+/* HALL */
+
+.hall{
+    display: none;
+}
+
+/* FALLING SCENE */
+
+.falling{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.scene{
+    width: 100%;
+    height: 464vh;
+    display: flex;
+    position: relative;
+    /* animation: towerSlide 5s linear; */
+    animation-fill-mode: forwards;
+}
+
+.tower{
+    z-index: 1;
+    position: absolute;
+    top: -1em;
+    right: -1em;
+    width: 36%;
+    display: flex;
+    flex-direction: column;
+}
+
+.roof{
+    top: -1em;
+    height: 30vh;
+    width: 150%;
+    margin-left: 5vw;
+    border: 1em solid black;
+    transform: skewX(-45deg);
+    background-color: white;
+    z-index: 1;
+}
+
+.stageBlock{
+    position: relative;
+    margin-top: -1em;
+    height: 90vh;
+    border: 0.5em solid black;
+    background-color: white;
+}
+
+.stageBlock h2{
+    font-size: min(9em,10vw);
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+    line-height: 0.8em;
+}
+
+.cloud{
+    background-image: url('img/cloud.png');
+    background-size: 100% 100%;
+    width: 50vh;
+    padding-bottom: 30vh;
+    position: absolute;
+}
+
+.cloud:first-of-type{
+    top: 3%;
+    left: 5%;
+}
+
+.cloud:nth-of-type(2){
+    top: -3%;
+    left: 28%;
+}
+
+.cloud:nth-of-type(3){
+    top: 4%;
+    left: 45%;
+}
+
+.balcony{
+    width: 50%;
+    max-width: 15em;
+    height: 50%;
+    margin-left: max(-50%,-15em);
+    margin-top: 25vh;
+    position: relative;
+}
+
+.balconyFloor{
+    position: absolute;
+    height: 1em;
+    width: 100%;
+    background-color: black;
+    bottom: 0;
+}
+
+.balconyFence{
+    width: 1em;
+    background-color: black;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+}
+
+.balconyDoor{
+    width: 2.5em;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: -0.5em;
+    background-color: white;
+    z-index: 1;
+    border: 1em solid black;
+}
+
+.towerDoor{
+    width: 2.5em;
+    height: 50%;
+    position: absolute;
+    bottom: -0.5em;
+    left: -1.5em;
+    background-color: white;
+    z-index: 1;
+    border: 1em solid black;
+}
+
+.bigTree{
+    background-image: url(./img/bigTree.png);
+    background-size: 100% 100%;
+    width: 55vh;
+    height: 60vh;
+    position: absolute;
+    bottom: 30vh;
+    left: -40vw;
+    z-index: -1;
+}
+
+.littleTree{
+    background-image: url(./img/littleTree.png);
+    background-size: 100% 100%;
+    width: 25vh;
+    height: 30vh;
+    position: absolute;
+    bottom: 60vh;
+    left: -60vw;
+    z-index: -1;
+}
+
+.horizon{
+    background-image: url(./img/horizon.png);
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 5vh;
+    position: absolute;
+    bottom: 80vh;
+    left: -250%;
+    z-index: -1;
+}
+
+.sign{
+    background-image: url(./img/sign.png);
+    background-size: 100% 100%;
+    width: 25vh;
+    height: 20vh;
+    position: absolute;
+    bottom: 5vh;
+    left: -65vw;
+    z-index: -1;
+}
+
+.sign p{
+    font-size: 4vh;
+    margin-left: 5vh;
+    margin-top: 2vh;
+}
+
+/* ANIMATIONS */
+
+.winnerGuy{
+    display: none;
+    background-image: url(./img/MarcheGauche3.png);
+    background-size: 100% 100%;
+    width: min(45vw,20em);
+    height: min(45vw,20em);
+    position: absolute;
+    z-index: 1;
+    left: min(-55%, -5em);
+    bottom: 0;
+    animation-fill-mode: forwards;
+}
+
+.falling .guy{
+    display: none;
+    background-image: url(./img/mec_qui_tombe.png);
+    background-size: 100% 100%;
+    width: min(45vw,20em);
+    height: min(45vw,20em);
+    position: sticky;
+    z-index: 1;
+    left: 20vw;
+    top: 40vh;
+    animation: 
+        guyFalling 0.2s infinite linear,
+        guyFallingEnd linear 1s 5s
+    ;
+    animation-fill-mode: forwards;
+    transition: none;
+}
+
+.falling .guy.onTheFloor{
+    top: 100vh;
+    animation: guyLiftUp 2s steps(1,start);
+    animation-fill-mode: forwards;
+}
+
+.falling .guy.walkRight{
+    z-index: 0;
+    top: 100vh;
+    animation: 
+        guyWalkRight 0.5s steps(1) infinite,
+        guyWalkToTower 5s 0.5s linear
+    ;
+    animation-fill-mode: forwards;
+}
+
+.room .walkRight, .hall .walkRight{
+    animation: 
+        guyWalkRight 0.5s steps(1) infinite
+    ;
+    animation-fill-mode: forwards;
+    transition: all 3s linear;
+    transform: scale(0.8);
+    top: 60vh;
+    left: 20vw;
+}
+
+.room .walkLeft, .hall .walkLeft{
+    animation: 
+        guyWalkLeft 0.5s steps(1) infinite
+    ;
+    animation-fill-mode: forwards;
+    transition: all 3s linear;
+    transform: scale(0.8);
+    top: 60vh;
+    left: -20vw;
+}
+
+.room .walkBack{
+    animation: 
+        guyWalkBack 0.5s steps(1,start) infinite
+    ;
+    animation-fill-mode: forwards;
+    transition: all 3s linear;
+    transform: scale(0.8);
+    top: 60vh;
+}
+
+.winnerGuy.walkLeft{
+    animation: 
+        guyWalkLeft 0.5s steps(1) infinite,
+        guyWalkToBalcony 2s linear
+    ;
+    animation-fill-mode: forwards;
+    transition: all 3s linear;
+}

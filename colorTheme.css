@@ -1,0 +1,90 @@
+*{
+    color: red;
+}
+
+img{
+    filter:unset;
+}
+
+.guy, .winnerGuy{
+    filter: invert(6%) sepia(94%) saturate(7206%) hue-rotate(248deg) brightness(131%) contrast(147%);
+}
+
+.homeMenu, .playButton, .colorTheme{
+    border-color: #0000ff;
+    background-color: greenyellow;
+}
+
+.playButton:hover{
+    color: red;
+    background-color: #0000ff;
+}
+
+.falling{
+    background: rgb(178,247,255);
+}
+
+.cloud{
+    filter: invert(8%) sepia(100%) saturate(7423%) hue-rotate(248deg) brightness(98%) contrast(142%);
+}
+
+.roof{
+    border-color: red;
+    background-color: orange;
+}
+
+.stageBlock, .balconyDoor, .towerDoor{
+    border-color: #3b2400;
+    background-color: rgb(119, 73, 0);
+}
+
+.balconyFloor, .balconyFence{
+    border-color: rgb(59, 36, 0);
+    background-color: rgb(59, 36, 0);
+}
+
+.bigTree, .littleTree, .horizon{
+    filter: invert(20%) sepia(55%) saturate(1623%) hue-rotate(95deg) brightness(101%) contrast(104%);
+}
+
+.sign{
+    filter: invert(14%) sepia(14%) saturate(6022%) hue-rotate(20deg) brightness(97%) contrast(103%);
+}
+
+.black{
+    background-color: #3b2400;
+}
+
+.frontWall, .leftWall, .rightWall, .floor, .ceiling, .innerDoor, .elevatorDoors div{
+    border-color: #3b2400;
+    background-color: yellow;
+}
+
+.handle{
+    background-color: #3b2400;
+}
+
+.floor{
+    background-color: #3b2400;
+}
+
+.ceiling{
+    background-color: pink;
+}
+
+.frontWall, .leftWall, .rightWall{
+    background-color: paleturquoise;
+}
+
+.digitalCode{
+    filter: invert(8%) sepia(100%) saturate(7423%) hue-rotate(248deg) brightness(98%) contrast(142%);
+}
+
+.wideDigitalCodeWindow, .wideDigitalCodeWindow div{
+    background-color: yellow;
+    border-color: blue;
+}
+
+.door, .elevator{
+    background-color: rgb(119, 73, 0);
+}
